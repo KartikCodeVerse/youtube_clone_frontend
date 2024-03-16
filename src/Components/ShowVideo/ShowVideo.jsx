@@ -4,15 +4,15 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 
 const ShowVideo = ({ vid }) => {
+  const Server_API = import.meta.env.VITE_SERVER_URL;
+
+  console.log(Server_API);
   return (
     <>
       <Link to={`${"/video/" + vid._id}`} className="show_video">
         <video
           className="video_ShowVideo"
-          src={
-           
-            `https://youtube-clone-backend-0w9h.onrender.com/${vid?.filePath[2].filePath}`
-          }
+          src={`${Server_API}/${vid?.filePath[2].filePath}`}
         />
       </Link>
       <div className="show_description">
@@ -25,7 +25,7 @@ const ShowVideo = ({ vid }) => {
           <p className="title">{vid?.videoTitle}</p>
           <pre className="time">{vid?.createdAt}</pre>
           <pre className="views_updoadtime">
-            {vid?.Views} Views <div className="dot"></div> {vid.uploder} Uploded
+            {vid?.Views} Views <div className="dot"></div> {vid.uploder} Uploded{" "}
             {moment(vid?.createdAt).fromNow()}
           </pre>
         </div>

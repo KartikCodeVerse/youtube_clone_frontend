@@ -12,6 +12,7 @@ import ShakaPlayer from "shaka-player-react";
 import "shaka-player/dist/controls.css";
 
 const VideoPage = () => {
+  const Server_API = import.meta.env.VITE_SERVER_URL;
   const [videourl, setvideourl] = useState("");
   const [selectedQuality, setSelectedQuality] = useState("720p"); // Default quality
   const [settingsVisible, setSettingsVisible] = useState(false);
@@ -51,9 +52,7 @@ const VideoPage = () => {
         (file) => file.quality === selectedQuality
       )?.filePath;
       if (defaultQualityFilePath) {
-        setvideourl(
-          `https://youtube-clone-backend-0w9h.onrender.com/${defaultQualityFilePath}`
-        );
+        setvideourl(`${Server_API}/${defaultQualityFilePath}`);
       }
     }
   }, []);
@@ -70,7 +69,7 @@ const VideoPage = () => {
     // Update the video URL with the selected quality's file path
     if (selectedQualityFilePath) {
       setvideourl(
-        `https://youtube-clone-backend-0w9h.onrender.com/${selectedQualityFilePath}`
+        `${Server_API}/${selectedQualityFilePath}`
       );
     }
   };

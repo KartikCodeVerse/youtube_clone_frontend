@@ -1,9 +1,9 @@
 import axios from "axios";
+const Server_API = import.meta.env.VITE_SERVER_URL;
+
 
 const API = axios.create({
-  baseURL:
-    // "http://localhost:3000/"
-    "https://youtube-clone-backend-0w9h.onrender.com/",
+  baseURL: `${Server_API}`,
 });
 
 API.interceptors.request.use((req) => {
